@@ -1,0 +1,15 @@
+[{
+    "name": "Benjamin Goes to a Christmas Party",
+    "folder": "Benjamin",
+    "thumbnail": "/Comics/Benjamin/thumbnail.jpg",
+    "pageCount": 8,
+    "description": "Benjamin goes to a Christmas party and is dismayed when things don't go as he planned."
+  },
+  
+  {
+    "name": "A Knightly Delusion",
+    "folder": "KnightlyDelusion",
+    "thumbnail": "/Comics/KnightlyDelusion/thumbnail.jpg",
+    "pageCount": 8,
+    "description": "A knight begins to think the magical sword that protects him from defeat has been stolen and replaced with a forgery."
+  }]

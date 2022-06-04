@@ -1,10 +1,13 @@
-import { Card, Container } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import { Outlet } from "react-router-dom";
-import data from "./data.json";
+import { LinkContainer } from 'react-router-bootstrap';
+import { useState, useEffect } from "react";
+import { Helmet } from "react-helmet";
+
 import Masonry from 'react-masonry-css';
 import './Masonry.css';
-import { LinkContainer } from 'react-router-bootstrap';
 
+//breaking points for masonry react componet
 const breakpointColumnsObj = {
   default: 3,
   1100: 2,
@@ -13,32 +16,54 @@ const breakpointColumnsObj = {
 };
 
 export default function Drawings() {
+
+  //fetch drawings and related data from json file
+  const [data, setData] = useState([]);
+  const getData = () => {
+    fetch('/data.json'
+      , {
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        }
+      }
+    )
+      .then(function (response) {
+        console.log(response)
+        return response.json();
+      })
+      .then(function (myJson) {
+        console.log(myJson);
+        setData(myJson)
+      });
+  }
+  useEffect(() => {
+    getData()
+  }, [])
+
   return (
-    <div>
+    <div className="pageContentPadding">
+      {/* change html meta data */}
+      <Helmet>
+          <title>Lasagna Soup - Drawings</title>
+          <meta name="description" content="Check out all my drawings!" />
+      </Helmet>
+
       <Outlet />
-    <Container>
-      <Masonry breakpointCols={breakpointColumnsObj} 
-        className="my-masonry-grid" 
-        columnClassName="my-masonry-grid_column">
 
-      {data.map((drawing) => (
-        <LinkContainer className="shadow" style={{ display: "block", margin: "1rem 0" }} 
-        to={`/drawings/${drawing.name}`} key={drawing.name}>
-        <Card border="none">
-          <Card.Img variant="top" src={drawing.src} alt={drawing.name} style={{cursor: "pointer"}}/>
-          <Card.Body style={{cursor: "pointer"}}>
-            <Card.Title>{drawing.name}</Card.Title>
-            <Card.Text>
-              {drawing.description}
-            </Card.Text>
-          </Card.Body>
-        </Card>
-        </LinkContainer>
-        
-        ))}
+      {/* display masonry drawing gallery */}
+      <Container>
+        <Masonry breakpointCols={breakpointColumnsObj}
+          className="my-masonry-grid"
+          columnClassName="my-masonry-grid_column">
 
+          {data.map((drawing) => (
+            <LinkContainer className="objectShadow drawingLink" to={`/drawings/${drawing.name}`} key={drawing.name}>
+              <img className="drawThumbnail" src={drawing.src} alt={drawing.name} style={{ cursor: "pointer" }} />
+            </LinkContainer>
+          ))}
         </Masonry>
-    </Container>
+      </Container>
     </div>
   );
 }
