@@ -1,70 +1,33 @@
-# Getting Started with Create React App
+# Welcome to Lasagna Soup
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## About the Site
 
-In the project directory, you can run:
+This is a personal website that contains all of my drawings and comics. It was created using React.js, Bootstrap, and React Bootstrap.
 
-### `npm start`
+To see the final product, travel to https://www.lasagnasoup.com.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+The website is hosted on an Amazon EC2 instance using and Apache HTTP Server.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Home
 
-### `npm test`
+At https://www.lasagnasoup.com/home, users can learn about the site, myself, and see some of the latest posts.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Drawings
 
-### `npm run build`
+At https://www.lasagnasoup.com/drawings, users can see a collection of all my drawings.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Drawings are displayed using react-masonry-css. This is a Masonry component for React created by Paul Collett. more information at https://www.npmjs.com/package/react-masonry-css.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Upon clicking on a drawing, users are redirected to At https://www.lasagnasoup.com/drawings/:drawingID, where :drawingID is a url parameter containing the name of the drawing that was clicked on. The requested drawing is displayed at full size along with a title/description and options to view the next and previous drawing in the gallery.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+If the url parameter :drawingID does not contain the name of an existing drawing, users are redirected back to https://www.lasagnasoup.com/drawings.
 
-### `npm run eject`
+## Comics
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+At https://www.lasagnasoup.com/comics, users can select one of my comics to read from.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Upon clicking on one of the comic thumbnails, users are redirected to At https://www.lasagnasoup.com/drawings/:comicID, where :comicID is a url parameter containing the name of the comic that was clicked on. The user is then given a new page where they can read the comic. 
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+If the url parameter :comicID does not contain the name of an existing drawing, users are redirected back to https://www.lasagnasoup.com/comics.
